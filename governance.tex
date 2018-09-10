@@ -1,0 +1,15 @@
+\section{Governance and Token Utility}
+There are a few parameters that could be subjected to on-chain governance through stake-based voting. Each of these voting scenarios will be a set of functions implemented smart contracts on either the root-chain or on \codename.
+
+\begin{itemize}
+\item Token pairs add/delete: adding a new pair involves creating a new shard and potentially either increase the validator pool or temporarily delute the number of validators per shard. Similarly, when certain shard is inactive or not having enough activity, stakeholders in this plasma chain could vote to drop this shard or merge it with existing shards.
+
+\item Validator registration threshold: this should be amenable based on the community's confidence in the comparison between their security deposit and the amount of transactions these validators are securing. ( by default, there should be a minimum barrier specified, and any further governance decision could only move around this parameter above this floor) 
+\item Validators Pool: change the number of validators chosen for each shard.
+
+\end{itemize}
+\textbf{Token Utilities.} KNC or any underlying token of \codename can be used for several utilities, including but not limited to the follows.
+\begin{itemize}
+\item Staking to be \codename validators. This is a basic staking function that requires validators to deposit KNC to the main \codename's contract in the root chain (i.e. Ethereum).
+\item Using KNC to pay for trading fees and get discount. This utility is used in several popular exchanges including Binance, Huobi. This can be implemented easily on \codename.
+\end{itemize}

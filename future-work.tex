@@ -1,0 +1,14 @@
+\section{Future Work}
+This paper focused on the architectural design and system properties of \codename, which
+leverages on careful interplay multiple state-of-the-art scalability solutions to build a
+high performance decentralized exchanges on cryptocurrency systems. The open question that is left for future work is
+ how to deal with front running. Miner/validator frontrunning is a well-observed
+  problem in permissionless blockchain system and is particularly troubesome in auction system
+  and exchange market. Specifically in \codename design, validators in each shard are able to profit from
+  "front running" the original order takers by pushing their own filling transactions first and resell later
+  at a higher price due to change in liquidity. Proposals like \textit{Submarine Send}\cite{submarine}
+  utilizes improvised "Commit-Reveal" paradigm where commit (also called "submarine send") is indistinguishable
+  from a normal transaction thus indistinguishable from miners' perspective, given sufficient anonymity-set size. It is
+  a viable solution for auction bid and order fill. However, it is still not clear how Submarine prevents validators from committing a lot of fake orders and only reveal the one that benefits them to front-run some specific order. In addition, this solution affects usability as it will introduce delay (confirmation blocks between commit phase
+  and reveal phase) and users will have to take extra steps to participate in the protocol. 
+  Note that on centralized exchanges, front-running is easier to do, and its hard to even detect if the exchange is front running other users.
