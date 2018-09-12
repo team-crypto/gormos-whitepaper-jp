@@ -1,14 +1,2 @@
 \section{Future Work}
-This paper focused on the architectural design and system properties of \codename, which
-leverages on careful interplay multiple state-of-the-art scalability solutions to build a
-high performance decentralized exchanges on cryptocurrency systems. The open question that is left for future work is
- how to deal with front running. Miner/validator frontrunning is a well-observed
-  problem in permissionless blockchain system and is particularly troubesome in auction system
-  and exchange market. Specifically in \codename design, validators in each shard are able to profit from
-  "front running" the original order takers by pushing their own filling transactions first and resell later
-  at a higher price due to change in liquidity. Proposals like \textit{Submarine Send}\cite{submarine}
-  utilizes improvised "Commit-Reveal" paradigm where commit (also called "submarine send") is indistinguishable
-  from a normal transaction thus indistinguishable from miners' perspective, given sufficient anonymity-set size. It is
-  a viable solution for auction bid and order fill. However, it is still not clear how Submarine prevents validators from committing a lot of fake orders and only reveal the one that benefits them to front-run some specific order. In addition, this solution affects usability as it will introduce delay (confirmation blocks between commit phase
-  and reveal phase) and users will have to take extra steps to participate in the protocol. 
-  Note that on centralized exchanges, front-running is easier to do, and its hard to even detect if the exchange is front running other users.
+本稿では、\codenameのアーキテクチャー設計とシステム特性に焦点を当てました。\codenameは、複数の最先端のスケーラビリティソリューションを慎重に相互運用し、暗号通貨システムで高性能な分散型取引所を構築します。将来の仕事のために残されている未解決の問題は、フロントランニングに対処する方法です。マイナー/バリデータのフロントランニングは、非制限のブロックチェーンシステムでよく見られる問題であり、オークションシステムや交換市場では特に面倒です。特に\codename設計では、各シャードのバリデーターは、自身の取引を最初に挿入して元の受注者を「フロントランニング」し、流動性の変化により後で高額で再販することで利益を得ることができます。\textit{Submarine Send}\cite{submarine}のようなプロポーザルは、十分な匿名性の設定が与えられているため、コミット（submarine sendとも呼ばれる）が通常の取引とマイナーの視点からは区別できな「Commit-Reveal」パラダイムを利用しています。オークションの入札および注文の記入には実行可能なソリューションです。しかし、Submarineがバリデータを使って多くの偽の注文をしないようにする方法は明らかではありません。さらに、このソリューションは、遅延（コミットフェーズと公開フェーズの間の確認ブロック）を発生させるため、ユーザビリティに影響し、ユーザはプロトコルに参加するために追加の手順を踏む必要があります。中央集権的取引所では、フロントランニングが簡単であり、取引所が他のユーザに対してフロントランニングを行っているかを検出することさえ困難です。
