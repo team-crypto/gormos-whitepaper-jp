@@ -5,7 +5,7 @@ Ethereumは、2015年の導入以来、プロジェクトや企業がネット�
 
 分散型取引所を例に挙げてみましょう。既存の分散型取引所は、流動性が低く、ユーザーエクスペリエンスが低く、スケーラビリティが低い（インフラストラクチャのため）などの大きな問題があります。これらの課題に取り組むにはさまざまな提案がありますが、各ソリューションはセキュリティ、分散化、またはサポート機能のいずれかで大きな妥協を見せています。たとえば、現在のKyberNetworkの取引所では、完全にオンチェーンで実行することで最適なセキュリティを実現し、わずかなクリックでより良いユーザーエクスペリエンスを実現し、取引を完了することができますが、リミットオーダー、トレーディングレバレッジ、または高頻度取引はまだサポートできません。0x~\footnote{\url{https://0xproject.com/}}やEtherDelta~\footnote{\url{https://etherdelta.com/}}のような他の取引所は、ハイブリッドモデル、すなわちオフチェーンの（集中化された）注文帳を持ち、チェーン上の決済を行うことによって、集中取引所での取引経験をシミュレートしようとします。ユーザーは本質的に注文書を保管して提供するサーバー/ウェブサイトに頼らざるをえないため、明確なセキュリティのトレードオフが存在します。いずれの解決策もEthereumブロックチェーン上で1つのオンチェーン取引を行うため、スケーラビリティの制約と待ち時間の長い決済が問題になります。執筆時点では、レイテンシは平均で約15秒であり、Ethereumブロックチェーンはトランザクションタイプに応じて毎秒約10-15回のトランザクションを処理できます。さらに、ブロックチェーンがCryptokittiesやいくつかの重要な公開トークンの販売などのイベントで混雑する際に、トランザクションのガス支払いにもっと高い取引手数料を支払わなければならないかもしれません。そのようなソリューションは、明らかに、Binance~\footnote{\url{https://www.binance.com/}}やHuobi~\footnote{\url{https://www.huobi.pro/}}などの集中化された取引所と競争することができません。現在のレポートでは~\cite{binance-report}、Binanceはピーク時に毎秒40,000要求を処理すると主張し、すべての分散型取引所のパフォーマンスを大きく引き離しました。重要な設計上の変更がない場合、分散された変更はほんの一部でしか使えず、プロのトレーダーは言うまでもなく主流のユーザーを引き付けることはできません。
 
-最近、Plasmaは、別のブロックチェーンにトランザクションをプッシュし、ユーザーを重要なブロックチェーンバリデーターから保護するためにクリプトエコノミクスを使用することで、有望なスケーラビリティで救助に到達しました~\cite{plasma}。しかし、既存のPlasma設計は高レベルであり、分散型取引所には最適化されていません。 Plasmaのスケーリングは、Plasmaバリデーターの物理的容量によっても制限されます。したがって、ユーザーエクスペリエンスとセキュリティーの保証を損なうことなく、最適なスケーリングを提供しません~\footnote{To be precise, the Plasma whitepaper mentions the concept of Plasma child chain. Technically it works and offers infinite scalability, but with the cost of user experience since they have to move their assets to many layers. Not to mention that the Plasma child chain is another layer of tradeoff for security guarantee.}。Binanceの規模を実現するとなると、各Plasmaノードは、テラバイトのデータとネットワーク帯域幅を格納しなければならない場合があります。 それにかかわらず、Plasmaに関しては相互運用性に関して議論されていない。
+最近、Plasmaは、別のブロックチェーンにトランザクションをプッシュし、ユーザーを重要なブロックチェーンバリデーターから保護するためにクリプトエコノミクスを使用することで、有望なスケーラビリティで救助に到達しました~\cite{plasma}。しかし、既存のPlasma設計は高レベルであり、分散型取引所には最適化されていません。 Plasmaのスケーリングは、Plasmaバリデーターの物理的容量によっても制限されます。したがって、ユーザーエクスペリエンスとセキュリティーの保証を損なうことなく、最適なスケーリングを提供しません~\footnote{正確には、Plasmaのホワイトペーパーには、Plasmaの子チェーンという概念があります。 技術的には無限のスケーラビリティを提供しますが、資産を多くのレイヤーにわたって移動する必要があるため、ユーザーエクスペリエンスのコストがかかります。 Plasmaの子チェーンは、セキュリティ保証のトレードオフのもう1つのレイヤーです。}。Binanceの規模を実現するとなると、各Plasmaノードは、テラバイトのデータとネットワーク帯域幅を格納しなければならない場合があります。 それにかかわらず、Plasmaに関しては相互運用性に関して議論されていない。
 
 スケーラビリティは、分散取引所だけでなく、ソーシャルネットワーク、ゲームなどの他の多くのアプリケーションにとっても明らかに問題です。例えば、Etheremon~\footnote{\url{https://etheremon.com}}とPeepeth~\footnote{\url{https://peepeth.com}}は現在、より良いユーザービリティを提供するために複数のアクティビティを束ねてチェーンにコミットするというトレードオフを採用しています。まだコミットされていないアクティビティはプロジェクトサーバ内にローカルに保存されているため、システムのセキュリティが大幅に低下します。
 
@@ -42,36 +42,36 @@ Ethereumは、2015年の導入以来、プロジェクトや企業がネット�
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.8\textwidth]{images//architecture}
-  \caption{\codename System Architecture}
+  \caption{\codename システムアーキテクチャ}
   \label{architecture}
 \end{figure}
 
 
 \subsection{デザインの概要}
 
-\codenameの高レベルのデザインはFig.\ref{architecture}に示されています。 \codenameは、Plasmaとシャーディングの両方の素晴らしい技術を採用しています。 Shardingアーキテクチャが組み込まれたこのPlasmaベースのアプローチでは、既存の取引プラットフォームにスケーリングの負荷を加えずに\footnote{More accurately, asymptotically optimal (i.e. constant factor cost) in main shard with increasing token pairs/shard, linear scaling within shard with increasing computations and communication costs incurred by more users.}、無限の取引ペアをリストすることができます。
+\codenameの高レベルのデザインはFig.\ref{architecture}に示されています。 \codenameは、Plasmaとシャーディングの両方の素晴らしい技術を採用しています。 シャーディングアーキテクチャが組み込まれたこのPlasmaベースのアプローチでは、既存の取引プラットフォームにスケーリングの負荷を加えずに\footnote{より正確には、メインシャードにおいて漸近的に最適な（すなわち、一定のコストで）トークンペアやシャードを増加させることにより、より多くのユーザーの参加による計算コストやコミュニケーションコストの増加に対応します}、無限の取引ペアをリストすることができます。
 
 私たちは新しいチェーンのバリデーターの中でビザンチン合意を採用して、低レイテンシとより迅速なファイナリティを達成しています。さらに重要なことに、このPlasmaチェーンの上にシャーディングアーキテクチャを設計して、無限のスケーリングを可能にします。私たちの調査では、異なる取引ペアのアクティビティを明確に分離し、異なるシャードにローカライズできます。例えば、ETH / KNCとBTC / OMGとの間の取引は分離することができ、ETH / KNC間で取引するユーザーは、BTC / OMGを取引するユーザーに影響を与えません。この設計では、既存のリスティングペアのパフォーマンスと取引のユーザー体験に影響を与えることなく、プラットフォームがより多くのトークンを扱う場合に、より多くのシャードを追加することができます。このような設計は、多数の取引ペアに拡張することができ、毎秒数百万回の取引をサポートしますが、バリデーターのリソースの必要量は最小限に抑えられます。 \codenameのバリデーターは、状態全体を保管する必要もなく、プラットフォーム内で起こっているすべての取引を処理する必要もありません。代わりに、彼らは自分のシャードの状態を保存し、シャードに記載されている対応する取引ペアのすべての取引を処理すればよいだけです。より多くのトレーディングペアを追加しても、既存のシャードのバリデーターには影響しません。
 
 \textbf{\codename設計の理論的根拠.} \codenameは、シャーディングとPlasmaの両方のアプローチを組み合わせ、お互いの限界を補い合うという利点を利用しています。 具体的には、\codenameはシャーディングの待ち時間を短縮するためにPlasmaを活用し、シャーディングを採用してPlasmaをさらにスケールアップします。 \codenameは両者の統合を、一般性（もしくは普遍的な適用性）のトレードオフにより実現します。 つまり、\codenameは応用分野に特化したものであり、特定の種類の分散型アプリケーションでのみ機能し、サブコンポーネントが明確に分離されています。
 
-ここまで説明したコアな調査結果を統合して、\codenameのヒューリスティックな理論的根拠を確立することができました。 シャーディング、Plasmaおよび\codenameのより詳細な比較を表\ref{comparison}に示します。
+ここまで説明したコアな調査結果を統合して、\codenameのヒューリスティックな理論的根拠を確立することができました。 シャーディング、Plasmaおよび\codenameのより詳細な比較をTable \ref{comparison}に示します。
 
 \begin{table}
   \centering
-  \begin{tabular}{|C{1.5cm}|C{2.2cm}|C{1.5cm}|C{3.2cm}|}
+  \begin{tabular}{|C{2.5cm}|C{3.2cm}|C{2cm}|C{3.2cm}|}
     \hline
-    & \textbf{Scalability} & \textbf{Latency} &\textbf{Applicability} \\
+    & \textbf{スケーラビリティ} & \textbf{レイテンシ} &\textbf{適用可能性} \\
     \hline
-    \textbf{Plasma} & 100x & Low & Generic \\
+    \textbf{Plasma} & 100x & 低 & 汎用的 \\
     \hline
-    \textbf{Sharding} & 100x & High\footnote{for standalone blockchain with sharding} & Somewhat Generic\\
+    \textbf{シャーディング} & 100x & 高\footnote{スタンドアロンのブロックチェーンにおけるシャーディング} & やや汎用的\\
     \hline
-    \textbf{\codename} & \textbf{1000x\xspace-\xspace10000x} & \textbf{Low} & \textbf{Application Specific} \\
+    \textbf{\codename} & \textbf{1000x\xspace-\xspace10000x} & \textbf{低} & \textbf{応用分野に特化} \\
     \hline
   \end{tabular}
   \vspace{2pt}
-  \caption{Plasma vs. Sharding vs. \codename}
+  \caption{Plasma 対 シャーディング 対 \codename}
   \label{comparison}
   \vspace{-20pt}
 \end{table}
@@ -94,7 +94,7 @@ Plasmaの1つの利点は、セキュリティ保証に影響を与えずにバ�
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.8\textwidth]{images//architecture2}
-  \caption{\codename's design architecture}
+  \caption{\codenameのデザインアーキテクチャ}
   \label{architecture2}
 \end{figure}
 
@@ -155,7 +155,7 @@ Plasmaの1つの利点は、セキュリティ保証に影響を与えずにバ�
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.8\textwidth]{images/validator}
-  \caption{Steps to be validators in \codename}
+  \caption{\codename においてバリデーターになるためのステップ}
   \label{fig:validator}
 \end{figure}
 
@@ -187,13 +187,15 @@ Plasmaの1つの利点は、セキュリティ保証に影響を与えずにバ�
 \end{align*}
 
 ここで、
-$\mtt{shard\_id}$: ユーザーが新しい注文で取引をしているシャードのID 
-$\mtt{new\_order\_merkle\_root}$: このブロックのすべての新しい注文をコミットするMerkleルート
-$\mtt{balance\_merkle\_root}$: このブロック内のすべての新しい注文を受け入れた後、シャード内の全員の残高をコミットするMerkleルート  
-$\mtt{avail\_balance\_merkle\_root}$: このブロック内のすべての新しい注文を受け入れた後、シャード内の全員の利用可能な残高をコミットするMerkleルート
-$\mtt{open\_order\_MMR\_root}$: このシャードのすべての未処理注文をコミットするMerkle Mountain Rangesルート
-$\mtt{closed\_order\_MMR\_root}$: このシャード内のすべてのクローズ注文をコミットするMerkle Mountain Rangesルート
-$\mtt{cancelled\_order\_MMR\_root}$: このシャードのすべてのキャンセル注文をコミットするMerkle Mountain Rangesルート 
+\begin{itemize}
+\item $\mtt{shard\_id}$: ユーザーが新しい注文で取引をしているシャードのID 
+\item $\mtt{new\_order\_merkle\_root}$: このブロックのすべての新しい注文をコミットするMerkleルート
+\item $\mtt{balance\_merkle\_root}$: このブロック内のすべての新しい注文を受け入れた後、シャード内の全員の残高をコミットするMerkleルート  
+\item $\mtt{avail\_balance\_merkle\_root}$: このブロック内のすべての新しい注文を受け入れた後、シャード内の全員の利用可能な残高をコミットするMerkleルート
+\item $\mtt{open\_order\_MMR\_root}$: このシャードのすべての未処理注文をコミットするMerkle Mountain Rangesルート
+\item $\mtt{closed\_order\_MMR\_root}$: このシャード内のすべてのクローズ注文をコミットするMerkle Mountain Rangesルート
+\item $\mtt{cancelled\_order\_MMR\_root}$: このシャードのすべてのキャンセル注文をコミットするMerkle Mountain Rangesルート 
+\end{itemize}
 
 一方、メインブロックはローカルシャードのすべてのローカルブロックヘッダを格納し、その結果を単一のメインブロックヘッダに合成します。 例えば、メインブロックのブロックヘッダは、以下のようにすることができます。
 
